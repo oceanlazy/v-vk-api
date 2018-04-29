@@ -10,9 +10,8 @@ More detailed information about VK API you can see in the official [documentatio
 ![Python3](https://img.shields.io/badge/Python-3-brightgreen.svg)
 [![Release](https://img.shields.io/github/release/vadimk2016/v-vk-api.svg)](https://github.com/vadimk2016/v-vk-api/releases)
 [![Documentation Status](https://readthedocs.org/projects/v-vk-api/badge/?version=latest)](http://v-vk-api.readthedocs.io/en/latest/?badge=latest)
-![Build](https://api.travis-ci.org/vadimk2016/v-vk-api.svg?branch=develop)
-![Codecov](https://img.shields.io/codecov/c/github/vadimk2016/v-vk-api/develop.svg)
-
+[![Build Status](https://travis-ci.org/vadimk2016/v-vk-api.svg?branch=master)](https://travis-ci.org/vadimk2016/v-vk-api)
+[![Coverage Status](https://coveralls.io/repos/github/vadimk2016/v-vk-api/badge.svg)](https://coveralls.io/github/vadimk2016/v-vk-api)
 ### Install
 
 ```
