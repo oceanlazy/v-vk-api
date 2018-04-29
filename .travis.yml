@@ -1,15 +1,12 @@
-language:
-  - python:3.5
-
-sudo:
-  - false
-
+language: python
 python:
-  - 3.5
-  - 3.6
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
 
-before_install:
-  - pip install -r requirements-dev.txt
+sudo: false
 
-script:
-  - flake8 v_vk_api
+before_install: pip install -r requirements-dev.txt
+
+script: flake8 v_vk_api
