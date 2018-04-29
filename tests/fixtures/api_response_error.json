@@ -1,0 +1,11 @@
+{"error":
+  {"error_msg": "CAPTCHA needed", "error_code": 14,
+    "request_params":
+      [
+        {"key": "oauth", "value": "1"},
+        {"key": "method", "value": "users.test"},
+        {"key": "users_id", "value": "1"},
+        {"key": "v", "value": "5.74"}
+      ]
+  }
+}
