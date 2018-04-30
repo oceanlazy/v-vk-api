@@ -18,7 +18,7 @@ def get_credentials():
 
 class TestApi(TestCase):
     credentials = get_credentials()
-    make_inp = iter(('',))  # for captcha input
+    make_inp = iter(('', ''))  # for captcha input
 
     def test_request_method(self):
         with patch('builtins.input', lambda prompt: next(self.make_inp)):
@@ -43,3 +43,14 @@ class TestApi(TestCase):
         self.assertEqual(len(response['response']['items']), 5)
         workplace = response['response']['items'][0]['occupation']['name']
         self.assertEqual(workplace, 'Telegram')
+
+    def test_open_request_method(self):
+        with patch('builtins.input', lambda prompt: next(self.make_inp)):
+            proxies = {'http': self.credentials.get('http_proxy'),
+                       'https': self.credentials.get('https_proxy')}
+            api = v_vk_api.create(proxies=proxies if proxies.get('https') else None)
+            response = api.request_method('users.get', user_ids=1)
+
+        self.assertIn('response', response)
+        self.assertIn('last_name', response['response'][0])
+        self.assertEqual(response['response'][0]['last_name'], 'Durov')

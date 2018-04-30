@@ -146,7 +146,6 @@ class APISession(requests.Session):
                         return url_params['access_token']
             finally:
                 self.close()  # close session because we do not need it more
-        raise VVKAuthException('Failed to get access token')
 
     def send_method_request(self, method: str, method_params: dict) -> dict:
         """
@@ -154,7 +153,8 @@ class APISession(requests.Session):
         """
         url = '/'.join((self.METHOD_URL, method))
         method_params['v'] = self.API_VERSION
-        method_params['access_token'] = self._access_token
+        if self._access_token:
+            method_params['access_token'] = self._access_token
         response = self.post(url, method_params, timeout=10)
         response.raise_for_status()
         return json.loads(response.text)
