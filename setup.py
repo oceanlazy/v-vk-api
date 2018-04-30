@@ -3,11 +3,11 @@ from setuptools import setup
 with open('README.md') as f:
     readme = f.read()
 
-setup(name='v-vk-api',
+setup(name='v_vk_api',
+      packages=['v_vk_api'],
       description='VK API wrapper',
       long_description=readme,
-      long_description_content_type='text/markdown',
-      version='1.0',
+      version='1.1',
       url='https://github.com/vadimk2016/v-vk-api',
       author='Vadim Kuznetsov',
       author_email='vadim.kuznyetsov@gmail.com',
@@ -21,7 +21,7 @@ setup(name='v-vk-api',
           'Programming Language :: Python :: 3',
           'Topic :: Internet'
       ],
-      packages=['v_vk_api'],
+      keywords='v-vk-api',
       python_requires='>=3',
       install_requires=[
           'beautifulsoup4==4.6.0',
