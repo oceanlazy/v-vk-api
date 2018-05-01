@@ -113,7 +113,7 @@ class APISession(requests.Session):
             'client_id': self._app_id,
             'display': 'mobile',
             'response_type': 'token',
-            'scope': 'offline',
+            'scope': '+66560',
             'v': self.API_VERSION
         }
         response = self.post(self.OAUTH_URL, oauth_data)
