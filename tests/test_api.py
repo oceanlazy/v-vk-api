@@ -11,6 +11,7 @@ def get_credentials():
     if os.path.isfile(cfg_path):
         with open('config_test.json') as f:
             return json.load(f)
+    return {}
 
 
 class TestApi(TestCase):
