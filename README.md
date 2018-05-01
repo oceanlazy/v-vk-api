@@ -46,7 +46,7 @@ To interact with the API, you need to [create](https://vk.com/editapp?act=create
 ## Tests
 
 Tests will check API connection and method requesting and some other helper functions like utils and exceptions, 
-to run tests:
+also to tun tests you need to provide a file `tests/config_test.json`. Run tests:
 ```
 $ python -m unittest discover tests
 ```
