@@ -1,5 +1,5 @@
 import os
-import configparser
+import json
 from unittest import TestCase
 from unittest.mock import patch
 
@@ -7,29 +7,24 @@ import v_vk_api
 
 
 def get_credentials():
-    cfg_path = os.path.join(os.path.dirname(__file__), 'test.cfg')
-    if not os.path.isfile(cfg_path):
-        raise FileNotFoundError('Please provide "test.cfg" '
-                                'file with your credentials')
-    config = configparser.ConfigParser()
-    config.read(cfg_path)
-    return config['CREDENTIALS']
+    cfg_path = os.path.join(os.path.dirname(__file__), 'config_test.json')
+    if os.path.isfile(cfg_path):
+        with open('config_test.json') as f:
+            return json.load(f)
 
 
 class TestApi(TestCase):
     credentials = get_credentials()
     make_inp = iter(('', ''))  # for captcha input
 
-    def test_request_method(self):
+    def test_method(self):
         with patch('builtins.input', lambda prompt: next(self.make_inp)):
-            proxies = {'http': self.credentials.get('http_proxy'),
-                       'https': self.credentials.get('https_proxy')}
             api = v_vk_api.create(
                 app_id=self.credentials.get('app_id'),
                 login=self.credentials.get('login'),
                 password=self.credentials.get('password'),
                 service_token=self.credentials.get('service_token'),
-                proxies=proxies if proxies.get('https') else None)
+                proxies=self.credentials.get('proxies'))
             response = api.request_method(
                 'users.search',
                 q='Pavel Durov',
@@ -44,11 +39,9 @@ class TestApi(TestCase):
         workplace = response['response']['items'][0]['occupation']['name']
         self.assertEqual(workplace, 'Telegram')
 
-    def test_open_request_method(self):
+    def test_open_method(self):
         with patch('builtins.input', lambda prompt: next(self.make_inp)):
-            proxies = {'http': self.credentials.get('http_proxy'),
-                       'https': self.credentials.get('https_proxy')}
-            api = v_vk_api.create(proxies=proxies if proxies.get('https') else None)
+            api = v_vk_api.create(proxies=self.credentials.get('proxies'))
             response = api.request_method('users.get', user_ids=1)
 
         self.assertIn('response', response)
