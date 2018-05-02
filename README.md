@@ -11,6 +11,7 @@ More detailed information about VK API you can see in the official [documentatio
 [![Release](https://img.shields.io/github/release/vadimk2016/v-vk-api.svg)](https://github.com/vadimk2016/v-vk-api/releases)
 [![Documentation Status](https://readthedocs.org/projects/v-vk-api/badge/?version=latest)](http://v-vk-api.readthedocs.io/en/latest/?badge=latest)
 [![Build Status](https://travis-ci.org/vadimk2016/v-vk-api.svg?branch=master)](https://travis-ci.org/vadimk2016/v-vk-api)
+[![Requirements Status](https://requires.io/github/vadimk2016/v-vk-api/requirements.svg?tag=v1.2)](https://requires.io/github/vadimk2016/v-vk-api/requirements/?tag=v1.2)
 [![Coverage Status](https://coveralls.io/repos/github/vadimk2016/v-vk-api/badge.svg)](https://coveralls.io/github/vadimk2016/v-vk-api)
 ### Install
 
