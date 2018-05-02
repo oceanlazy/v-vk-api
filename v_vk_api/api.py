@@ -11,7 +11,7 @@ class API:
     def __init__(self, session: APISession) -> None:
         self.session = session
 
-    def check_for_errors(self, method, method_kwargs, response):
+    def check_for_errors(self, method: str, method_kwargs: dict, response: dict) -> None:
         if 'error' in response:
             api_error = VVKApiException(response['error'])
             if api_error.code == 14:  # captcha needed error
@@ -21,7 +21,8 @@ class API:
                 if captcha_key:
                     method_kwargs['sid'] = api_error.captcha_sid
                     method_kwargs['key'] = captcha_key
-                    return self.request_method(method, **method_kwargs)
+                    self.request_method(method, **method_kwargs)
+                    return
             raise api_error
 
     def request_method(self, method: str,

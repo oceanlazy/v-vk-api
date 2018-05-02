@@ -8,10 +8,11 @@ import v_vk_api
 
 def get_credentials():
     cfg_path = os.path.join(os.path.dirname(__file__), 'config_test.json')
+    credentials = {}
     if os.path.isfile(cfg_path):
-        with open('config_test.json') as f:
-            return json.load(f)
-    return {}
+        with open(cfg_path) as f:
+            credentials = json.load(f)
+    return credentials
 
 
 class TestApi(TestCase):
@@ -24,7 +25,6 @@ class TestApi(TestCase):
                 app_id=self.credentials.get('app_id'),
                 login=self.credentials.get('login'),
                 password=self.credentials.get('password'),
-                service_token=self.credentials.get('service_token'),
                 proxies=self.credentials.get('proxies'))
             response = api.request_method(
                 'users.search',
