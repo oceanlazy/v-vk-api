@@ -25,7 +25,7 @@ setup(name='v_vk_api',
       python_requires='>=3',
       install_requires=[
           'beautifulsoup4==4.6.0',
-          'certifi==2018.4.16',
+          'certifi==2022.12.7',
           'chardet==3.0.4',
           'idna==2.6',
           'requests==2.18.4',
